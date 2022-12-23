@@ -118,6 +118,8 @@
           <p>As we can see in the graph, the high percentage of valid values in the actor gender column, with 89.87%, means that we can trust the accuracy and completeness of the information provided. This will be important for our analysis, as we are specifically interested in examining the representation of female characters in popular films. By using the actor gender data, we can accurately identify the gender of each character and understand the ways in which male and female characters are depicted.</p>
           <br>
           <p>Additionally, each movie has its plot summary, which means that we can rely on the information provided to analyze the content of the films. By examining the plot summaries, we can understand the roles and characteristics of the characters in each movie and how they are portrayed. This will be useful for our analysis of the representation of female characters in the film industry. The plot summaries data will provide valuable insights into the ways in which female characters are depicted on screen and how this representation compares to that of male characters.</p>
+          <br>
+          <p>What does the dataset look like comparing males and females? We have a total of 450,669 different characters, where 60% are male and 30% female (the remaining are not specified). There are a total of 96,476 actors and actresses, where 63% are men and 37% are women. So, it looks like the unbalance arises from the beginning of the data exploration. Let’s dig deeper into it!</p>
         </div>
 
       </div>
@@ -131,36 +133,43 @@
         <div class="section-header">
               <h2>Actor and Actress Popularity Over Time</h2>
               <br>
-              <p>To further understand the representation of male and female actors in popular films, we will also be analyzing the popularity of actors and actresses over time. To do this, we will examine the number of Wikipedia page views for each actor or actress and plot a graph showing the number of views as a function of time elapsed since their last movie. This will allow us to understand whether there are any trends in the popularity of actors and actresses and whether certain factors, such as the gender of the performer or the genre of their films, may be influencing their popularity.</p>
+              <p>To further understand the representation of male and female actors in popular films, we will also be analyzing the popularity of actors and actresses over time. To do this, we will examine the number of Wikipedia pageviews for each actor or actress. Wikipedia API provides this information only for recent years, so it would not be fair to compare actors that were active several years ago with currently active actors. Therefore, we decided to plot a graph showing the number of views as a function of time elapsed since their last movie. This will allow us to understand whether there are any trends in the popularity of actors and actresses and whether the gender of the performer may be influencing their popularity.</p>
               <br>
               <!-- Plot -->
               <center>
                 <iframe src="assets/graphs/time_since_last_movie_popularity.html" height="800" width="1400" frameBorder="0"></iframe>
               </center>
               <!-- End Plot -->
-              </div>
-          </div>
-      </div>
-    </section>
+              <br>
+              <p>It looks like the distribution might follow a power law for both genders. It also seems like there might be more outliers of famous men than famous women. From the visualization of this graph we can hypothesize about these, but a more detailed analysis is needed to see if the difference is statistically significant.</p>
+              <br>
+              <p>The following graph shows the same information as before, but in log-log axes. With this visualization a power law should be a straight line.</p>  
+            
+
+              <br>
+              <!-- Plot -->
+              <center>
+                <iframe src="assets/graphs/time_since_last_movie_popularity_log.html" height="800" width="1300" frameBorder="0"></iframe>
+              </center>
+              <!-- End Plot -->
+              <br>
+              <p>Wow! The distribution is really sparse! In the previous graph it looked like there were many more men well above the rest than in
+                the case of women. Now, we see that the men graph is more sparse both with more famous and with less famous people. So, we wonder whether there is really any factor that makes male actors systematically more popular than females. As power-laws follow linear dependencies in these axes, a linear regression (with ordinary least squares) is useful for this case. We model the log of the pageviews as a linear combination of the log of the time and the gender. As expected from the graph, the R-squared is very low (0.069), but the p-values for both variables are very close to zero. This means that both input variables have an impact on the popularity of the actors, and the coefficient associated to the gender is -0,3378, which would mean that the number of pageviews of women is, on average, exp(-0,3378) = 0.71 times the pageviews of men. This means that even if we cannot infer it directly from the graph, gender definitely plays a role in the popularity of the actors.</p>
+             <br>
+            
+            </div>
+          <!-- </div> -->
+      <!-- </div> -->
+    <!-- </section> -->
     <!-- End Graph 2 Section -->
 
     <!-- ======= Graph 3 Section ======= -->
-    <section id="graph3">
-      <div class="container">
+    <!-- <section id="graph3"> -->
+       <!-- <div class="container"> -->
 
-        <div class="section-header">
-          <h2>Graph 3</h2>
-          <br>
-          <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
-          <br>
-          <!-- Plot -->
-          <center>
-            <iframe src="assets/graphs/time_since_last_movie_popularity_log.html" height="800" width="1300" frameBorder="0"></iframe>
-          </center>
-          <!-- End Plot -->
-          <br>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius facere saepe distinctio blanditiis inventore expedita sint delectus voluptas nihil esse sequi aspernatur repellat nam illum vero tempore incidunt, ipsa temporibus?
-          Deserunt ducimus provident, voluptatibus temporibus voluptas natus quia saepe ipsum doloremque, accusamus unde inventore ipsa eveniet ab nulla quos illum, hic perferendis distinctio sapiente officia mollitia. Eaque animi consequuntur et.</p>
+        <!-- <div class="section-header"> -->
+          <!-- <h2>Graph 3</h2> -->
+         
         </div>
 
       </div>
@@ -168,7 +177,7 @@
     <!-- End Graph 3 Section -->
 
     <!-- ======= Graph 4 Section ======= -->
-    <section id="get-started" class="get-started section-bg">
+    <section id="get-started">
       <div class="container">
 
         <div class="row justify-content-between gy-4">
@@ -196,7 +205,7 @@
     <!-- End Graph 4 Section -->
 
     <!-- ======= Graph 5 Section ======= -->
-    <section id="graph5">
+    <section id="graph5" class="get-started section-bg">
       <div class="container">
 
         <div class="section-header">
@@ -219,7 +228,7 @@
     <!-- End Graph 5 Section -->
 
     <!-- ======= Graph 6 Section ======= -->
-    <section id="get-started" class="get-started section-bg">
+    <section id="get-started">
       <div class="container">
 
         <div class="row justify-content-between gy-4">
